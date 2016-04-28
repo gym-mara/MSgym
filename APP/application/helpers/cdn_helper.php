@@ -1,9 +1,7 @@
 <?php 
 	function cdn(){
 		
-		if (ZONA == "local") {
-			$url_cdn = "http://localhost/MaraSport/CDN/";
-			}else{}
+		$url_cdn = BASE_CDN;
 
 		 return $url_cdn;
 	}

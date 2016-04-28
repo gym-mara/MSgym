@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-	$config['base_url'] = '//localhost/MaraSport/AP/API/';
+	$config['base_url'] = BASE_URL;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,8 +1,33 @@
 <?php
+/*
+|--------------------------------------------------------------------------
+| Config 
+|--------------------------------------------------------------------------
+|
+|
+*/
 date_default_timezone_set('America/Mexico_City');
+
 //Local or Internet
 define("ZONA","local");
-define("ZONADB","local");
+define("TITLE", "MaraSport ");
+
+define("ZONADB_HOSTNAME","localhost");
+define("ZONADB_USERNAME","root");
+define("ZONADB_PASSWORD","");
+define("ZONADB_DATABASE","marasport");
+
+$base_dir = "//localhost/server/XR8/MSgym/";
+$base_api = "//localhost/server/XR8/MSgym/API/";
+$base_app = "//localhost/server/XR8/MSgym/APP/";
+$base_cdn = "//localhost/server/XR8/MSgym/CDN/";
+
+define("BASE_DIR",$base_dir);
+define("BASE_URL",$base_dir);
+define("BASE_API",$base_api);
+define("BASE_APP",$base_app);
+define("BASE_CDN",$base_cdn);
+
 /**
  * CodeIgniter
  *

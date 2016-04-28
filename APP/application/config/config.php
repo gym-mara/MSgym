@@ -1,5 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+|--------------------------------------------------------------------------
+| Base Site URL
+|--------------------------------------------------------------------------
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|	http://example.com/
+|
+| If this is not set then CodeIgniter will try guess the protocol, domain
+| and path to your installation. However, you should always configure this
+| explicitly and never rely on auto-guessing, especially in production
+| environments.
+|
+*/
+	$config['base_url'] = BASE_URL;
+
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -10,12 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | variable so that it is blank.
 |
 */
-
-if (ZONA == "local"){
 	$config['index_page'] = 'index.php';
-	}else{
-		$config['index_page'] = '';
-		}
 
 /*
 |--------------------------------------------------------------------------

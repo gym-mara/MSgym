@@ -64,10 +64,10 @@ $query_builder = TRUE;
 /*local con db local*/
 $db['default'] = array(
         'dsn'      => '',
-        'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '',
-        'database' => 'marasport',
+        'hostname' => ZONADB_HOSTNAME,
+        'username' => ZONADB_USERNAME,
+        'password' => ZONADB_PASSWORD,
+        'database' => ZONADB_DATABASE,
         'dbdriver' => 'mysqli',
         'dbprefix' => '',
         'pconnect' => TRUE,

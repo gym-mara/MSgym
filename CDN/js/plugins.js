@@ -19,26 +19,29 @@
           
 
      //Local or INTERNET
-        var ZONAAPI = "LOCAL"
-        var ZONAAPP = "LOCAL"
-        var ZONACDN = "LOCAL"            
+        var ZONAAPI  = "LOCAL"
+        var ZONAAPP  = "LOCAL"
+        var ZONACDN  = "LOCAL"            
+        var ZONABASE = "//localhost/server/XR8/MSgym/"  
+
+
             //API URL
             if (ZONAAPI == "LOCAL"){
-                api_url      = "//localhost/MaraSport/API/index.php/";
+                api_url      = ZONABASE + "API/index.php/";
                 }else{}
 
             //API URL
             if (ZONAAPP == "LOCAL"){
-                app_url          = "//localhost/MaraSport/APP/index.php/";  
+                app_url          = ZONABASE + "APP/index.php/";  
                 }else{}   
 
             //API URL
             if (ZONACDN == "LOCAL"){
-                cdn_url          = "//localhost/MaraSport/CDN/";  
+                cdn_url          = ZONABASE + "CDN/";  
                 }else{}   
                         
             
-            camSwf= "http://localhost/MaraSport/CDN/js/";
+            camSwf= cdn_url + "js/";
 
           console.log(' Load: Begin Bootstrap: modal.js v3.3.5'); 
 
