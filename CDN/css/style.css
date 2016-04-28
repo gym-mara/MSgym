@@ -1,0 +1,25 @@
+/* ==========================================================================
+							STYLUS
+   ========================================================================== */
+/**
+ * Coment Coment Coment Coment Coment Coment Coment 
+ * Coment Coment Coment Coment Coment Coment Coment. 
+ *
+ * @package     Css
+ * @subpackage  Libraries
+ * @category    Libraries
+ * @author      Xr8
+ * @link        http://url.com
+ */
+/*IMPORT  */
+/*NIB*/
+.slider-1 {
+    height: 300px;
+
+    background: url("http://localhost/server/XR8/GYM/WEB/CDN/img/gym.jpg") 50% 0 no-repeat fixed;
+}
+.form-control .text-capitalize .ui-autocomplete-input {
+
+    top: 15px;
+}
+@import "stylus/full.css";
