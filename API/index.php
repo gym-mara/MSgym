@@ -17,10 +17,10 @@ define("ZONADB_USERNAME","root");
 define("ZONADB_PASSWORD","");
 define("ZONADB_DATABASE","marasport");
 
-$base_dir = "//localhost/server/XR8/MSgym/";
-$base_api = "//localhost/server/XR8/MSgym/API/";
-$base_app = "//localhost/server/XR8/MSgym/APP/";
-$base_cdn = "//localhost/server/XR8/MSgym/CDN/";
+$base_dir = "//localhost/MaraSport/";
+$base_api = "//localhost/MaraSport/API/";
+$base_app = "//localhost/MaraSport/APP/";
+$base_cdn = "//localhost/MaraSport/CDN/";
 
 define("BASE_DIR",$base_dir);
 define("BASE_URL",$base_dir);
