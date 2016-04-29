@@ -23,7 +23,7 @@ $base_app = "//localhost/server/XR8/MSgym/APP/";
 $base_cdn = "//localhost/server/XR8/MSgym/CDN/";
 
 define("BASE_DIR",$base_dir);
-define("BASE_URL",$base_dir);
+define("BASE_URL",$base_app);
 define("BASE_API",$base_api);
 define("BASE_APP",$base_app);
 define("BASE_CDN",$base_cdn);

@@ -332,12 +332,13 @@
                             }
              }
 
+            /*Begin: Asistencia Regresa [id,nombre]*/
             function clientes_search_find_cb(){
 
                 $query = $_GET['term'];                
                 
                 $this->db->select('*');
-                $this->db->from('gym_clientes');
+                $this->db->select('gym_clientes.id,gym_clientes.id_advance,gym_clientes.nombre');
                 $this->db->like('codebar', $query);
                 //$this->db->limit('1');
                     //$this->db->join('gym_suscripcion', 'gym_suscripcion.id_advance_cliente = gym_clientes.id_advance');                                
@@ -356,17 +357,18 @@
                 
                 $query = $_GET['term'];                
                 //no tocar sirve para pasar asistencia
-                $this->db->select('gym_clientes.id,gym_clientes.nombre,gym_clientes.foto,gym_suscripcion.id_advance_cliente,gym_suscripcion.fecha_proxima,gym_membresia.membresia,,gym_membresia.precio,gym_suscripcion.id_advance_membresia,gym_suscripcion.fecha_proxima');
-                
+                $this->db->select('gym_clientes.id,gym_clientes.id_advance,gym_clientes.nombre');
+
                 /*$this->db->select('*');*/
                 $this->db->from('gym_clientes');
                 $this->db->like('nombre', $query);
                 
-                
+                    /*
                     $this->db->join('gym_suscripcion', 'gym_clientes.id_advance = gym_suscripcion.id_advance_cliente');                                
                         $this->db->join('gym_membresia', 'gym_membresia.id_advance  = gym_suscripcion.id_advance_membresia');                               
                     
                     //$this->db->limit('1');
+                        */
                 $query = $this->db->get();
            
                     if ($query->num_rows() > 0) {
@@ -376,8 +378,6 @@
                             return false;
                             }
                 }  
-
-
             function clientes_search_find_id(){
                 
                 $query = $_GET['term'];                
@@ -386,16 +386,17 @@
                 //no tocar sirve para pasar asistencia
                 //$this->db->select('gym_clientes.id,gym_clientes.nombre,gym_clientes.foto,gym_suscripcion.id_advance_cliente,gym_suscripcion.fecha_proxima,gym_membresia.membresia,,gym_membresia.precio,gym_suscripcion.id_advance_membresia,gym_suscripcion.fecha_proxima');
                 
-                $this->db->select('gym_clientes.id,gym_clientes.nombre,gym_clientes.foto,gym_suscripcion.id_advance_cliente,gym_suscripcion.fecha_proxima,gym_membresia.membresia,,gym_membresia.precio,gym_suscripcion.id_advance_membresia,gym_suscripcion.fecha_proxima');
+                $this->db->select('gym_clientes.id,gym_clientes.id_advance,gym_clientes.nombre');
                 
                 $this->db->from('gym_clientes');
                 $this->db->where('gym_clientes.id', $query);
 
-
+                    /*
                     $this->db->join('gym_suscripcion', 'gym_clientes.id_advance = gym_suscripcion.id_advance_cliente');                                
                         $this->db->join('gym_membresia', 'gym_membresia.id_advance  = gym_suscripcion.id_advance_membresia');                                
                     
                     $this->db->limit(1);
+                    */
 
                 $query = $this->db->get();
            
@@ -406,6 +407,8 @@
                             return false;
                             }
                 }                              
+            /*End: Asistencia Regresa [id,nombre]*/
+
 
             function clientes_view_historial(){
                     //$id_advance = "P7xodpXCt9bFhuZvLBlj";
