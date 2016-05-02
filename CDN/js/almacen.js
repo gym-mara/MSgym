@@ -149,7 +149,13 @@ console.error('Run: Puro Flow !!!')
 
                                             ui_color = "warning";
 
+<<<<<<< HEAD
                                             }else{ui_color = " ";}
+=======
+                                            }else{
+                                                ui_color = " ";
+                                            }
+>>>>>>> origin/Check-Error
                     
                     if ( val.cantidad >  10000) {          
 
@@ -194,6 +200,7 @@ console.error('Run: Puro Flow !!!')
             
                             });
         //API End: Almacen All
+
 
         }  
     
