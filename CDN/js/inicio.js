@@ -493,8 +493,10 @@ console.error('Run: Puro Flow !!!')
 
                     },select: function (event, ui) {
                         $(".asistencia-info").show();
+
                         // XMLHttpRequest --->
                             $.getJSON(api_socio_one2 + ui.item.id_advance,function(data) {  
+
                                 $.each(data, function(i,val){  
                                     
                                     if (val.foto== "") {
@@ -505,15 +507,67 @@ console.error('Run: Puro Flow !!!')
                                         foto = "data:image/png;base64," + foto;
                                         }
                                 
-                                    $("#s-socio-asistencia").empty().fadeIn(2000).attr('src', foto );
+                                        $("#s-socio-asistencia").empty().fadeIn(2000).attr('src', foto );
 
-                                    $(".a-nombre_pago").html(val.nombre);
-                                    $(".a-numero_pago").html(val.id);
-                                    $(".a-tipo_pago").html(val.membresia);
-                                    $(".a-precio_pago").html(val.precio);
-                                    $(".a-fecha_renovacion_pago").html(val.fecha_proxima);
+                                        $(".a-nombre_pago").html(val.nombre);
+                                        $(".a-numero_pago").html(val.id);
+                                        $(".a-tipo_pago").html(val.membresia);
+                                        $(".a-precio_pago").html(val.precio);
+                                        $(".a-fecha_renovacion_pago").html(val.fecha_proxima);
+                                        $("input.s-id_advance").val(val.id_advance);
+
+                                        
                                     });  
-                                });  
+
+                                }).done(function() {
+                                        
+                                    console.log("Caja: Tiket Success (TPSx000001).");
+
+                                    // XMLHttpRequest --->
+                                        $.getJSON(api_socio_one3 + ui.item.id_advance,function(data) {  
+
+                                            $.each(data, function(i,val){  
+                                                
+                                                $(".a-tipo_pago").empty().html(val.membresia);    
+                                                $(".a-fecha_renovacion_pago").empty().html(val.fecha_proxima);    
+                                                  
+                                                });  
+
+                                            }).done(function() {
+                                                    
+                                                console.log("Caja: Tiket Success (TPSx000001).");
+
+                                                }).fail(function(jqXHR, textStatus , errorThrown) {
+                                                        
+                                                    error_net(jqXHR, textStatus );
+
+                                                    console.error("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+                                                    alert("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+
+                                                    }).always(function() {
+                                            
+                                                        console.log("Caja: Tiket Success (TPSx000002).");
+                                                        
+
+                                                        });
+                                            //API End: Almacen All
+
+                                          
+
+                                    }).fail(function(jqXHR, textStatus , errorThrown) {
+                                            
+                                        error_net(jqXHR, textStatus );
+
+                                        console.error("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+                                        alert("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+
+                                        }).always(function() {
+                                
+                                            console.log("Caja: Tiket Success (TPSx000002).");
+                                            
+
+                                            });
+                                //API End: Almacen All
                     }
 
             })
@@ -557,7 +611,7 @@ console.error('Run: Puro Flow !!!')
                                 alert("Inicio: Asistencia Error (IAEx000001 [" + fail_txt + "] ).");
 
                             }).always(function() {
-                                reload(500);
+                                reloadon(500);
                                 console.log("        Inicio: Asistencia Success (IASx000002).");
                     
                                     });

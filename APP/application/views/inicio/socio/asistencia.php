@@ -23,7 +23,6 @@
       <p >Nombre del cliente:  <span class="a-nombre_pago">info json</span></p>
       <p >Numero del cliente:  <span class="a-numero_pago">info json</span></p>
       <p >Tipo de suscripción: <span class="a-tipo_pago">info json</span></p>
-      <p >Precio:              <span class="a-precio_pago">info json</span></p>
       <p >Fecha de Renovación  <span class="a-fecha_renovacion_pago">info json</span></p>
       <p >Comentario           </p>
       <textarea name="" id="" cols="30" rows="10" class="a-comentario"></textarea>

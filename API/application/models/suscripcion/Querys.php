@@ -35,6 +35,42 @@
                                 }
                 }
             //----->END: View All
+
+   
+                function suscripcion_view_one()
+                {
+
+                $this->db->select('
+                    gym_suscripcion.id,
+                    gym_suscripcion.id_advance,
+                    gym_suscripcion.id_advance_trabajador,
+                    gym_suscripcion.id_advance_cliente,
+                    gym_suscripcion.id_advance_membresia,
+                    gym_suscripcion.fecha_inicio,
+                    gym_suscripcion.fecha_proxima,
+                    gym_suscripcion.pago,
+
+                    gym_membresia.membresia
+                    ');
+
+                $this->db->from('gym_suscripcion');
+                $this->db->where('gym_suscripcion.id_advance_cliente',$_GET['id_advance']);
+                $this->db->join('gym_membresia', 'gym_suscripcion.id_advance_membresia = gym_suscripcion.id_advance_membresia');
+                
+                $this->db->order_by("id", "desc"); 
+                $this->db->limit(1);
+
+                    $query = $this->db->get();
+               
+                        if ($query->num_rows() > 0) {
+                            foreach ($query->result() as $row) {
+                                $data[] = $row;
+                                }
+                                return $data;
+                            }else{
+                                return false;
+                                }
+                }
         //----->END VIEW
 
 

@@ -23,7 +23,8 @@
             api_search_cb                    = api_url + "clientes/search/action/query_cb/tipo/json";
             /*Asistencia datos*/
             api_socio_one2                   = api_url + "socio/viwer/action/one-noimg/tipo/json/filter/dos/?id_advance=";
-            
+
+            api_socio_one3                   = api_url + "suscripcion/socio/action/one/tipo/json/filter/dos/?id_advance=";
         /*Begin:CHECK URL*/
 
 

@@ -90,28 +90,32 @@
         function socio_view_two_no_img_dos(){
 
             $id_advance = $_GET['id_advance'];
-
+            /*
             $this->db->select('gym_clientes.id,gym_clientes.id_advance,gym_clientes.nombre,gym_clientes.fecha_nacimiento,gym_clientes.foto,gym_suscripcion.id as id_suscripcion,gym_suscripcion.fecha_inicio,gym_suscripcion.fecha_proxima,gym_membresia.membresia,gym_membresia.precio');
+            */
+                $this->db->select('*');
                 $this->db->from('gym_clientes');
                 $this->db->where('gym_clientes.id_advance',$id_advance);
-
+                
+                /*
                 $this->db->join('gym_membresia', 'gym_clientes.membresia = gym_membresia.id_advance');
                 $this->db->join('gym_suscripcion', 'gym_suscripcion.id_advance_cliente = gym_clientes.id_advance');  
 
                 $this->db->order_by("id_suscripcion", "desc"); 
                 $this->db->limit(1);
-
+                */
                 $query = $this->db->get();
        
                 if ($query->num_rows() > 0) {
+
                     foreach ($query->result() as $row) {
-                        $row->fecha_nacimiento2  = edad($row->fecha_nacimiento);
+                        //$row->fecha_nacimiento2  = edad($row->fecha_nacimiento);
                         $data[] = $row;
-                    }
+                        }
+
                         return $data;
-                    }else{
-                        return false;
-                        }  
+
+                    }else{return false;}  
          }
 
         function socio_view_one_img(){
