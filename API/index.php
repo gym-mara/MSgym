@@ -22,6 +22,7 @@ $base_api = "//localhost/MaraSport/API/";
 $base_app = "//localhost/MaraSport/APP/";
 $base_cdn = "//localhost/MaraSport/CDN/";
 
+
 define("BASE_DIR",$base_dir);
 define("BASE_URL",$base_dir);
 define("BASE_API",$base_api);

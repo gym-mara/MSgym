@@ -18,7 +18,9 @@
         function ticketnew(){
             //print_r($_POST);
             
-
+           print_r($_GET);
+           print_r($_POST);
+           
             $ticket_info        = $_POST['ticket_info'];
             $taskArray2Aticket1 = $_POST['taskArray2Aticket1'];
             $taskArray2Aticket2 = $_POST['taskArray2Aticket2'];
@@ -93,7 +95,7 @@
                             
 
                             //------>
-                            if ($taskArray2Aticket2[$i] == 'inscripcion anual') {
+                            if ($taskArray2Aticket2[$i] == 'inscripcion') {
                                 echo 'm2';
                                 $m = 'lKRChsBo6ZiJ21NrzHOy';
                             }
@@ -253,7 +255,9 @@
                     [item_precio_final] => 101
                 )
             */
-           
+           print_r($_GET);
+           print_r($_POST);
+
            $id_advance_ticket = random_string('alnum', 20);
            $item_precio_final = ($_POST['item_precio_final'] * -1);
 
