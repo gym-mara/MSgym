@@ -231,7 +231,8 @@
                             
                             
 
-                        }      
+                        }     
+                        //echo "-----" ;
                         //print_r($item2);
                         $this->db->insert_batch('gym_suscripcion', $item2);   
             }else{
