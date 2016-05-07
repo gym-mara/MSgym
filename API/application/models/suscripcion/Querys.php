@@ -57,7 +57,7 @@
                 $this->db->where('gym_suscripcion.id_advance_cliente',$_GET['id_advance']);
                 $this->db->join('gym_membresia', 'gym_suscripcion.id_advance_membresia = gym_suscripcion.id_advance_membresia');
                 
-                $this->db->order_by("id", "asc"); 
+                $this->db->order_by("id", "desc"); 
                 $this->db->limit(1);
 
                     $query = $this->db->get();
