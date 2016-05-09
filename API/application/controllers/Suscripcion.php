@@ -1,55 +1,42 @@
 <?php
 class Suscripcion extends CI_Controller {
 
-    public function __construct()
-    {
-            parent::__construct();
-            // Your own constructor code
+    public function __construct(){
+        parent::__construct();
+        $this->load->database();
 
-            $this->load->database();
             $this->default= $this->load->database('default', TRUE);
-
             $this->load->model('suscripcion/Querys');  
-    }
+        }
 
-    public function index()
-    {
+    public function index(){
         echo '
-        <h1>API GYM 1.0</h1>
-        <ul>    
-            <li>Viwer</li>
-            <li><a href="http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all/tipo/json">all</a>              : http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all/tipo/json</li>
-            <li><a href="http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all-noimg/tipo/json">all no img </a>: http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all-noimg/tipo/json</li>
-        </ul>
+            <h1>API GYM 1.0</h1>
+            <ul>    
+                <li>Viwer</li>
+                <li><a href="http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all/tipo/json">all</a>              : http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all/tipo/json</li>
+                <li><a href="http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all-noimg/tipo/json">all no img </a>: http://localhost/server/XR8/GYM/WEB/API/index.php/clientes/viwer/action/all-noimg/tipo/json</li>
+            </ul>
         ';                                   
-    }    
+        }    
 
-    /*  Viwer
-            all        :http://localhost/server/XR8/GYM/WEB/API/index.php/suscripcion/viwer/action/all/tipo/json
-            Update     :suscripcion/update/action/update/tipo/json
-    */
-
-    public function Viwer($action,$r_action,$tipo,$r_tipo)
-    {
+    public function Viwer($action,$r_action,$tipo,$r_tipo){
         //-----> Viwer all
-            if ($r_action == 'all')
-            {
-                //----->
-                $xr8_data= $this->Querys->suscripcion_view_all();   
-            }     
+        if ($r_action == 'all'){
+            //----->
+            $xr8_data= $this->Querys->suscripcion_view_all();   
+            }
 
-            //-----> Type
-            if ($r_tipo == 'html') 
-            {
-                echo "html";
-                }elseif ($r_tipo == 'json') {
-                    //----->json
-                    $this->output->set_content_type('application/json')->set_output(json_encode($xr8_data));  
-                    }else{echo"blank";}
-    }  
+        //-----> Type
+        if ($r_tipo == 'html') {
+            echo "html";
+            }elseif ($r_tipo == 'json') {
+                //----->json
+                $this->output->set_content_type('application/json')->set_output(json_encode($xr8_data));  
+                }else{echo"blank";}
+        }  
 
-    public function Update($action,$r_action,$tipo,$r_tipo)
-    {
+    public function Update($action,$r_action,$tipo,$r_tipo){
 
         $id_advance_cliente = $_GET['id_advance_cliente'];
         $json_membresia_id  = $_GET['json_membresia_id'];
@@ -96,23 +83,21 @@ class Suscripcion extends CI_Controller {
                     //----->json
                     $this->output->set_content_type('application/json')->set_output(json_encode($xr8_data));  
                     }else{echo"blank";}
-    }  
+        }  
 
-    public function Socio($action,$r_action,$tipo,$r_tipo)
-    {
+    public function Socio($action,$r_action,$tipo,$r_tipo){
         //-----> Viwer all
         if ($r_action == 'one'){
             $xr8_data= $this->Querys->suscripcion_view_one();
             }     
 
             //-----> Type
-            if ($r_tipo == 'html') 
-            {
+            if ($r_tipo == 'html') {
                 echo "html";
                 }elseif ($r_tipo == 'json') {
-                    //----->json
                     $this->output->set_content_type('application/json')->set_output(json_encode($xr8_data));  
                     }else{echo"blank";}            
-    }
 
-}
+        }
+
+    }

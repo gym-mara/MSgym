@@ -7,6 +7,7 @@
 |
 */
 
+include "xr8_config.php";
 
 /**
  * CodeIgniter

@@ -506,7 +506,9 @@ console.error('Run: Puro Flow !!!')
                                         foto = foto.split(' ').join('+');
                                         foto = "data:image/png;base64," + foto;
                                         }
-                                
+
+                                        $(".socio-url").removeAttr('href').attr('href',app_url + 'socio/?id_advance=' + val.id_advance);
+                                        
                                         $("#s-socio-asistencia").empty().fadeIn(2000).attr('src', foto );
 
                                         $(".a-nombre_pago").html(val.nombre);
@@ -530,7 +532,17 @@ console.error('Run: Puro Flow !!!')
                                                 
                                                 $(".a-tipo_pago").empty().html(val.membresia);    
                                                 $(".a-fecha_renovacion_pago").empty().html(val.fecha_proxima);    
-                                                  
+                                                
+                                                //color_asistencia
+                                                if (val.color == 'verde') {
+                                                    $(".color_asistencia").addClass('color-verde');
+                                                    }else if (val.color == 'amarillo') {
+                                                        $(".color_asistencia").addClass('color-amarillo');
+                                                        }else if (val.color == 'rojo') {
+                                                            $(".color_asistencia").addClass('color-rojo');
+                                                            }else{
+                                                                $(".color_asistencia").addClass('');
+                                                                }
                                                 });  
 
                                             }).done(function() {
