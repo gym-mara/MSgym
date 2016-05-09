@@ -98,4 +98,21 @@ class Suscripcion extends CI_Controller {
                     }else{echo"blank";}
     }  
 
+    public function Socio($action,$r_action,$tipo,$r_tipo)
+    {
+        //-----> Viwer all
+        if ($r_action == 'one'){
+            $xr8_data= $this->Querys->suscripcion_view_one();
+            }     
+
+            //-----> Type
+            if ($r_tipo == 'html') 
+            {
+                echo "html";
+                }elseif ($r_tipo == 'json') {
+                    //----->json
+                    $this->output->set_content_type('application/json')->set_output(json_encode($xr8_data));  
+                    }else{echo"blank";}            
+    }
+
 }

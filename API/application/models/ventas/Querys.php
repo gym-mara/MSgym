@@ -233,11 +233,13 @@
 
 
                 $id_advance_trabajdor = $_GET['id_advance_trabajdor'];
-                $fecha = $_GET['fecha'];
+                
+                if (empty($_GET['fecha'])) {
+                        $fecha = Date('Y-m-d');
+                    }else{
+                        $fecha =$_GET['fecha'];
+                        }
 
-                if ($fecha == "") {
-                    $fecha = Date('Y-m-d');
-                    }else{}
 
                     if ($id_advance_trabajdor == 'admin,kuc1XyJjGvDWwK') {
 
@@ -275,16 +277,22 @@
             //sirve para hacer la sumatoria del corte  total o por usuario
             function all(){
                 
-                $id_advance_trabajdor = $_GET['id_advance_trabajdor'];
-                $fecha = Date('Y-m-d');
 
+                $id_advance_trabajdor = $_GET['id_advance_trabajdor'];
+                
+                if (empty($_GET['fecha'])) {
+                        $fecha = Date('Y-m-d');
+                    }else{
+                        $fecha =$_GET['fecha'];
+                        }
+                
 
                     if ($id_advance_trabajdor == 'admin,kuc1XyJjGvDWwK') {
-
+                                                  
                             //Nombre  Precio  Cantidad    Precio Final
                             //$this->db->select ('item,item_precio,count(item_precio_final) as cantidad,sum(item_precio_final) as item_precio_final');
                         $this->db->select ('*');
-                            
+                            $this->db->where ('id_advance_trabajador',$id_advance_trabajdor);
                             $this->db->like   ('gym_ventas.fecha', $fecha);
                             $this->db->from   ('gym_ventas');  
                             
@@ -300,7 +308,6 @@
                             
 
                             }
-
 
                    
                 /*                    
@@ -349,17 +356,24 @@
                 
                     $fecha = Date('Y-m-d');
                 $id_advance_trabajdor = $_GET['id_advance_trabajdor'];
+                
+                if (empty($_GET['fecha'])) {
+                        $fecha = Date('Y-m-d');
+                    }else{
+                        $fecha =$_GET['fecha'];
+                        }
+                
 
                 if ($id_advance_trabajdor == 'admin,kuc1XyJjGvDWwK' or $id_advance_trabajdor == '') {
 
-                    $this->db->select ('SUM(item_precio_final) as item_precio_final');
+                    $this->db->select ('*');
                     $this->db->like   ('gym_ventas.fecha', $fecha);
                     $this->db->from   ('gym_ventas');   
                     $this->db->group_by('gym_ventas.item_precio');                          
 
                     }else{
 
-                        $this->db->select ('SUM(item_precio_final) as item_precio_final');
+                        $this->db->select ('*');
                         $this->db->where  ('gym_ventas.id_advance_trabajador',$_GET['id_advance_trabajdor']);
                         $this->db->like   ('gym_ventas.fecha', $fecha);
                         $this->db->from   ('gym_ventas');   

@@ -48,17 +48,6 @@ console.error('Run: Puro Flow !!!')
         console.log('Begin: All');
             $("#dialog-ticket-caja").hide()
 
-
-
-            $.get(api_ventas_folio, function (data) {
-                $.each(data, function (key, val) {
-                    
-                    $(".ticket-folio").html(val.id);
-
-                });
-            })  
-
-
         console.log('End: All');
         }        
 
@@ -480,19 +469,11 @@ console.error('Run: Puro Flow !!!')
         }
 
         function refreshAsistencaHoy(){
-            setTimeout(function(){
-                $('.count-asistencia').empty()
-
-            // XMLHttpRequest --->                
-                $.get(api_asistencia_count, function( data ) {
-                    $('.count-asistencia').fadeIn().html(data)
-                })
-
-            },2000)            
+       
             }  
         
         function autocompletarAsistencia(){
-
+            $(".asistencia-info").hide();
             $("input.a-i-codebar").autocomplete({
                 minLength: 1,
                 delay: 400,
@@ -502,50 +483,92 @@ console.error('Run: Puro Flow !!!')
                     $.getJSON(api_search_cb, req, function(data) {  
                         var suggestions = [] ;  
                             $.each(data, function(i,val){  
-
                                suggestions.push({
-                                    id_cliente: val.id,
-                                    nombre: val.nombre,
                                     value: val.nombre,
-                                    foto: val.foto,
-                                    id_advance_cliente: val.id_advance_cliente,
-                                    fecha_proxima: val.fecha_proxima,
-                                    membresia: val.membresia,
-                                    precio: val.precio
+                                    id_advance: val.id_advance
                                     });
-
-
                             });  
                         add(suggestions);  
-                    })
+                        })
 
-                },select: function (event, ui) {
+                    },select: function (event, ui) {
+                        $(".asistencia-info").show();
 
+                        // XMLHttpRequest --->
+                            $.getJSON(api_socio_one2 + ui.item.id_advance,function(data) {  
 
-                    if (ui.item.foto== "") {
-                        var foto = cdn_url + 'img/logo.png'
-                        }else{
-                            var foto = ui.item.foto;
-                            foto = foto.split(' ').join('+');
+                                $.each(data, function(i,val){  
+                                    
+                                    if (val.foto== "") {
+                                    var foto = 'http://placehold.it/175x150/FF3D00/000000'
+                                    }else{
+                                        var foto = val.foto;
+                                        foto = foto.split(' ').join('+');
+                                        foto = "data:image/png;base64," + foto;
+                                        }
+                                
+                                        $("#s-socio-asistencia").empty().fadeIn(2000).attr('src', foto );
 
-                            foto = "data:image/png;base64," + foto;
-                            }
+                                        $(".a-nombre_pago").html(val.nombre);
+                                        $(".a-numero_pago").html(val.id);
+                                        $(".a-tipo_pago").html(val.membresia);
+                                        $(".a-precio_pago").html(val.precio);
+                                        $(".a-fecha_renovacion_pago").html(val.fecha_proxima);
+                                        $("input.s-id_advance").val(val.id_advance);
 
-                    $("#s-socio-asistencia").fadeIn(2000).attr('src', foto );
-                    $(".a-nombre_pago").empty().append(ui.item.nombre);
-                    $(".a-numero_pago").empty().append(ui.item.id_cliente);
-                    
+                                        
+                                    });  
 
-                    $(".a-tipo_pago").empty().append(ui.item.membresia);
-                    $(".a-precio_pago").empty().append(ui.item.precio);
-                    $(".a-fecha_renovacion_pago").empty().append(ui.item.fecha_proxima); 
+                                }).done(function() {
+                                        
+                                    console.log("Caja: Tiket Success (TPSx000001).");
 
-                    $('.asistencia-info').fadeIn()
-                    
-                    $("input.s-id_advance").empty().val(ui.item.id_advance_cliente);
-                    $("input.s-codebar").empty().val(ui.item.codebar);
+                                    // XMLHttpRequest --->
+                                        $.getJSON(api_socio_one3 + ui.item.id_advance,function(data) {  
 
-                }
+                                            $.each(data, function(i,val){  
+                                                
+                                                $(".a-tipo_pago").empty().html(val.membresia);    
+                                                $(".a-fecha_renovacion_pago").empty().html(val.fecha_proxima);    
+                                                  
+                                                });  
+
+                                            }).done(function() {
+                                                    
+                                                console.log("Caja: Tiket Success (TPSx000001).");
+
+                                                }).fail(function(jqXHR, textStatus , errorThrown) {
+                                                        
+                                                    error_net(jqXHR, textStatus );
+
+                                                    console.error("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+                                                    alert("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+
+                                                    }).always(function() {
+                                            
+                                                        console.log("Caja: Tiket Success (TPSx000002).");
+                                                        
+
+                                                        });
+                                            //API End: Almacen All
+
+                                          
+
+                                    }).fail(function(jqXHR, textStatus , errorThrown) {
+                                            
+                                        error_net(jqXHR, textStatus );
+
+                                        console.error("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+                                        alert("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+
+                                        }).always(function() {
+                                
+                                            console.log("Caja: Tiket Success (TPSx000002).");
+                                            
+
+                                            });
+                                //API End: Almacen All
+                    }
 
             })
 
@@ -588,7 +611,7 @@ console.error('Run: Puro Flow !!!')
                                 alert("Inicio: Asistencia Error (IAEx000001 [" + fail_txt + "] ).");
 
                             }).always(function() {
-                                reload(500);
+                                reloadon(500);
                                 console.log("        Inicio: Asistencia Success (IASx000002).");
                     
                                     });

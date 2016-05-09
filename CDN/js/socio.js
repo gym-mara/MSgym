@@ -38,9 +38,7 @@ console.error('Run: Puro Flow !!!')
                 //process response  
                 $.each(data, function(i, val){  
 
-                    
-
-
+                    id_advance_cliente = val.id_advance;
                     $(".i-c-actualizar-id_a_s").val(val.id_advance)
                     //Informacion Socio
                     $(".s-nombre").empty().fadeIn(2000).append(val.nombre)
@@ -100,15 +98,44 @@ console.error('Run: Puro Flow !!!')
                             }
 
                             $("#s-socio").attr('src',foto);
+                    
+                    // XMLHttpRequest --->
+                        $.getJSON(api_socio_one3 + val.id_advance,function(data) {  
 
+                            $.each(data, function(i,val){  
+                                
+                                $(".s-fecha_proxima").empty().html(val.fecha_proxima);    
+                                $(".s-fecha_inicio").empty().html(val.fecha_inicio);    
+                                
+                                  
+                                });  
+
+                            }).done(function() {
+                                    
+                                console.log("Caja: Tiket Success (TPSx000001).");
+
+                                }).fail(function(jqXHR, textStatus , errorThrown) {
+                                        
+                                    error_net(jqXHR, textStatus );
+
+                                    console.error("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+                                    alert("Caja: Tiket Error (TPEx000001 [" + fail_txt + "] ).");
+
+                                    }).always(function() {
+                            
+                                        console.log("Caja: Tiket Success (TPSx000002).");
+                                        
+
+                                        });
+                            //API End: Almacen All
 
                 })
 
-            }).done(function() {
-
+            }).done(function(id_advance_cliente) {
                         
                 console.log("Almacen: Folio Success (TPSx000001).");
-                    
+
+
                 }).fail(function(jqXHR, textStatus , errorThrown) {
                         
                     error_net(jqXHR, textStatus );

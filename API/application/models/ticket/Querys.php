@@ -16,9 +16,11 @@
             }
 
         function ticketnew(){
-            print_r($_POST);
+            //print_r($_POST);
             
-
+           print_r($_GET);
+           print_r($_POST);
+           
             $ticket_info        = $_POST['ticket_info'];
             $taskArray2Aticket1 = $_POST['taskArray2Aticket1'];
             $taskArray2Aticket2 = $_POST['taskArray2Aticket2'];
@@ -93,7 +95,7 @@
                             
 
                             //------>
-                            if ($taskArray2Aticket2[$i] == 'inscripcion anual') {
+                            if ($taskArray2Aticket2[$i] == 'inscripcion') {
                                 echo 'm2';
                                 $m = 'lKRChsBo6ZiJ21NrzHOy';
                             }
@@ -111,12 +113,12 @@
                                             
                             //echo $m;
                             //echo $taskArray2Aticket2[$i];
-                            echo $_POST['taskArray2Aticket7'];
-                            echo $taskArray2Aticket2[$i];
+                            //echo $_POST['taskArray2Aticket7'];
+                            //echo $taskArray2Aticket2[$i];
 
                             if( !$_POST['taskArray2Aticket7'] ){
 
-                                    echo "Fecha normal:";
+                                    //echo "Fecha normal:";
 
                                                                 //------>
                                     if ($taskArray2Aticket2[$i] == 'Membresia 1 Año') {
@@ -138,11 +140,24 @@
                                             $item2[$i]['fecha_proxima']         = date('Y-m-d', strtotime("+30 days"));                                        
                                             }
 
+                                    if ($taskArray2Aticket2[$i] == 'inscripcion') {
+                                            $item2[$i]['fecha_inicio']          = date('Y-m-d');
+                                            $item2[$i]['fecha_proxima']         = date('Y-m-d', strtotime("+30 days"));
+                                        }
+                                    if ($taskArray2Aticket2[$i] == 'mantenimiento') {
+                                            $item2[$i]['fecha_inicio']          = date('Y-m-d');
+                                            $item2[$i]['fecha_proxima']         = date('Y-m-d', strtotime("+30 days"));
+                                        }
+                                    if ($taskArray2Aticket2[$i] == 'casillero renta mensual') {
+                                            $item2[$i]['fecha_inicio']          = date('Y-m-d');
+                                            $item2[$i]['fecha_proxima']         = date('Y-m-d', strtotime("+30 days"));
+                                        }
+                                                                                                                        
 
 
                                 }else{
 
-                                    echo "Fecha especial:";
+                                    //echo "Fecha especial:";
 
                                     //$fecha_especial = $_POST['taskArray2Aticket7'];
 
@@ -180,28 +195,40 @@
                                         }                                        
                                     if ($taskArray2Aticket2[$i] == 'Membresia 1 Año') {
 
-                                            $newdate        = strtotime ( '+1 year' , strtotime ( $date ) ) ;
-                                            $fecha_especial =  date ( 'Y-m-d' , $newdate );
+                                        $newdate        = strtotime ( '+1 year' , strtotime ( $date ) ) ;
+                                        $fecha_especial =  date ( 'Y-m-d' , $newdate );
 
-                                            $item2[$i]['fecha_inicio']          = $_POST['taskArray2Aticket7'];
-                                            $item2[$i]['fecha_proxima']         = $fecha_especial;
-
+                                        $item2[$i]['fecha_inicio']          = $_POST['taskArray2Aticket7'];
+                                        $item2[$i]['fecha_proxima']         = $fecha_especial;
                                         }
-
+                                    if ($taskArray2Aticket2[$i] == 'inscripcion') {
+                                            $item2[$i]['fecha_inicio']          = date('Y-m-d');
+                                            $item2[$i]['fecha_proxima']         = date('Y-m-d', strtotime("+30 days"));
+                                        }
+                                    if ($taskArray2Aticket2[$i] == 'mantenimiento') {
+                                            $item2[$i]['fecha_inicio']          = date('Y-m-d');
+                                            $item2[$i]['fecha_proxima']         = date('Y-m-d', strtotime("+30 days"));
+                                        }
+                                    if ($taskArray2Aticket2[$i] == 'casillero renta mensual') {
+                                            $item2[$i]['fecha_inicio']          = date('Y-m-d');
+                                            $item2[$i]['fecha_proxima']         = date('Y-m-d', strtotime("+30 days"));
+                                        }
                                     }      
 
-                            print_r($item2);
+                            //print_r($item2);
 
                             $item2[$i]['id_advance']            = random_string('alnum', 20);
                             $item2[$i]['id_advance_trabajador'] = $ticket_info[0];
                             
                             $item2[$i]['pago']                  = 1;
-                            $item2[$i]['id_advance_membresia']   = $m;
+                            $item2[$i]['id_advance_membresia']  = $m;
                             $item2[$i]['id_advance_cliente']    = $taskArray2Aticket6[0];
 
+                            
                             $this->db->where ('id_advance', $taskArray2Aticket6[$i]);
                             $this->db->set   ('membresia', $m);
                             $this->db->update('gym_clientes');  
+                            
                             
 
                         }      
@@ -228,7 +255,9 @@
                     [item_precio_final] => 101
                 )
             */
-           
+           print_r($_GET);
+           print_r($_POST);
+
            $id_advance_ticket = random_string('alnum', 20);
            $item_precio_final = ($_POST['item_precio_final'] * -1);
 

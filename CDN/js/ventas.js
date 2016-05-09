@@ -2,14 +2,14 @@ console.error('Run: Puro Flow !!!')
 
     $(document).on("ready",All)
 	
-    $(document).on("ready",VaporHoy)
-    $(document).on("ready",MembresiaHoy)
+    //$(document).on("ready",VaporHoy)
+    //$(document).on("ready",MembresiaHoy)
     //$(document).on("ready",ProductosHoy)
     //$(document).on("ready",ServiciosHoy)
     $(document).on("ready",TodoHoy)
     $(document).on("ready",TodoHoycount)
     
-	$(document).on("ready",Fecha)
+    $(document).on("ready",Fecha)
     console.debug('Run: All')
 
     /***************************************************    
@@ -77,8 +77,8 @@ console.error('Run: Puro Flow !!!')
 	    $("#datepicker").datepicker();
 	    $("#datepicker").on("change",function(){
 	        fecha = $(this).val();
-	        VaporHoy2(fecha)
-	        MembresiaHoy2(fecha)
+	        //VaporHoy2(fecha)
+	        //MembresiaHoy2(fecha)
 	        //ProductosHoy2(fecha)
 	        //ServiciosHoy2(fecha)
 	        TodoHoy2(fecha)

@@ -16,6 +16,19 @@
 
         /*URLS NEWS*/
 
+        /*Begin:CHECK URL*/
+
+            //INICIO*****
+            /*Asistencia*/
+            api_search_cb                    = api_url + "clientes/search/action/query_cb/tipo/json";
+            /*Asistencia datos*/
+            api_socio_one2                   = api_url + "socio/viwer/action/one-noimg/tipo/json/filter/dos/?id_advance=";
+
+            api_socio_one3                   = api_url + "suscripcion/socio/action/one/tipo/json/filter/dos/?id_advance=";
+        /*Begin:CHECK URL*/
+
+
+
             //INICIO*****
             api_inicio_all_noimg             = api_url + "inicio/viwer/action/all-noimg/tipo/json/filter/week";
             api_inicio_all_noimg_one_cb      = api_url + "inicio/viwer/action/all-noimg-one/tipo/json/filter/cb";
@@ -26,7 +39,7 @@
 
             //SOCIO *****
             api_socio_one                    = api_url + "socio/viwer/action/one-noimg/tipo/json/filter/one/?id_advance=";
-            api_socio_one2                   = api_url + "socio/viwer/action/one-noimg/tipo/json/filter/dos/?id_advance=";
+            
             api_socio_two                    = api_url + "socio/viwer/action/one-noimg/tipo/json/filter/two/?id_advance=";
             api_socio_one_foto               = api_url + "socio/viwer/action/one-img/tipo/json/filter/one/?id_advance=";            
             api_socio_historial_one          = api_url + "socio/historial/action/all/tipo/json/?id_advance=";
@@ -38,7 +51,7 @@
 
             //CLIENTES *****
             api_search                       = api_url + "clientes/search/action/query/tipo/json";
-            api_search_cb                    = api_url + "clientes/search/action/query_cb/tipo/json";
+            
             api_socio_asistencia             = api_url + "clientes/asistencia/action/all/tipo/json/"; 
             api_cliente_new                  = api_url + "clientes/newitem/action/one/tipo/json";
             api_cliente_update               = api_url + "clientes/updateitem/action/one/tipo/json";
