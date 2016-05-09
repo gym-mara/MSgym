@@ -22,7 +22,10 @@
         var ZONAAPI  = "LOCAL"
         var ZONAAPP  = "LOCAL"
         var ZONACDN  = "LOCAL"            
-        var ZONABASE = "//localhost/server/XR8/MSgym/"  
+        //var ZONABASE = "//localhost/server/XR8/MSgym/"  
+        var ZONABASE = "//localhost/MaraSport/"  
+
+        
 
 
             //API URL
