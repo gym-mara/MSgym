@@ -149,13 +149,9 @@ console.error('Run: Puro Flow !!!')
 
                                             ui_color = "warning";
 
-<<<<<<< HEAD
-                                            }else{ui_color = " ";}
-=======
-                                            }else{
-                                                ui_color = " ";
-                                            }
->>>>>>> origin/Check-Error
+
+                                            }else{ui_color = " "}
+
                     
                     if ( val.cantidad >  10000) {          
 

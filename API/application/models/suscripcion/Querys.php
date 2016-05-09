@@ -40,36 +40,57 @@
                 function suscripcion_view_one()
                 {
 
-                $this->db->select('
-                    gym_suscripcion.id,
-                    gym_suscripcion.id_advance,
-                    gym_suscripcion.id_advance_trabajador,
-                    gym_suscripcion.id_advance_cliente,
-                    gym_suscripcion.id_advance_membresia,
-                    gym_suscripcion.fecha_inicio,
-                    gym_suscripcion.fecha_proxima,
-                    gym_suscripcion.pago,
 
-                    gym_membresia.membresia
-                    ');
+                    $this->db->select('
+                        gym_suscripcion.id,
+                        gym_suscripcion.id_advance,
+                        gym_suscripcion.id_advance_trabajador,
+                        gym_suscripcion.id_advance_cliente,
+                        gym_suscripcion.id_advance_membresia,
+                        gym_suscripcion.fecha_inicio,
+                        gym_suscripcion.fecha_proxima,
+                        gym_suscripcion.pago,
 
-                $this->db->from('gym_suscripcion');
-                $this->db->where('gym_suscripcion.id_advance_cliente',$_GET['id_advance']);
-                $this->db->join('gym_membresia', 'gym_suscripcion.id_advance_membresia = gym_suscripcion.id_advance_membresia');
+                        gym_membresia.membresia
+                        ');
+
+                    $this->db->from('gym_suscripcion');
+                    $this->db->where('gym_suscripcion.id_advance_cliente',$_GET['id_advance']);
+                    $this->db->join('gym_membresia', 'gym_membresia.id_advance = gym_suscripcion.id_advance_membresia');
                 
-                $this->db->order_by("id", "desc"); 
-                $this->db->limit(1);
+                    $this->db->order_by("gym_suscripcion.id", "desc"); 
+                    $this->db->limit(1);
+                
+                        $query = $this->db->get();
+                   
+                            if ($query->num_rows() > 0) {
+                                foreach ($query->result() as $row) {
+                                    $row->fecha_hoy = Date("Y-m-d");
 
-                    $query = $this->db->get();
-               
-                        if ($query->num_rows() > 0) {
-                            foreach ($query->result() as $row) {
-                                $data[] = $row;
-                                }
-                                return $data;
-                            }else{
-                                return false;
-                                }
+                                    $datetime1 = new DateTime($row->fecha_hoy);
+                                    $datetime2 = new DateTime($row->fecha_proxima);
+                                    $interval = $datetime1->diff($datetime2);
+
+                                    $row ->intervalo = $interval ->format('%d');
+    
+                                    if ($interval ->format('%d') >= 4) {
+                                        $row->color = "verde";    
+                                        }else if ($interval ->format('%d') == 3){
+                                            $row->color = "amarillo";    
+                                            }else if ($interval ->format('%d') == 0){
+                                                $row->color = "rojo";    
+                                            }
+
+
+
+                                       
+                                        $data[] = $row;
+                                    }
+
+                                    return $data;
+                                
+                                }else{return false;}
+
                 }
         //----->END VIEW
 

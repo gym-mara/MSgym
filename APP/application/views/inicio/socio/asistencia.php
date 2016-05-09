@@ -17,13 +17,13 @@
 
   <div class="row asistencia-info">
     <div class="col-xs-4">
-      <img id="s-socio-asistencia" class="img-circle" src='http://placehold.it/200x150' style="width: 175px;height: 150px;.saturate {-webkit-filter: saturate(250%);}">
+      <a href="" class="socio-url"><img id="s-socio-asistencia" class="img-circle" src='http://placehold.it/200x150' style="width: 175px;height: 150px;.saturate {-webkit-filter: saturate(250%);}"></a>
     </div>
     <div class="col-xs-8">
       <p >Nombre del cliente:  <span class="a-nombre_pago">info json</span></p>
       <p >Numero del cliente:  <span class="a-numero_pago">info json</span></p>
       <p >Tipo de suscripción: <span class="a-tipo_pago">info json</span></p>
-      <p >Fecha de Renovación  <span class="a-fecha_renovacion_pago">info json</span></p>
+      <div class="color_asistencia"><p>Fecha de Renovación  <span class="a-fecha_renovacion_pago">info json</span></p><br></div>
       <p >Comentario           </p>
       <textarea name="" id="" cols="30" rows="10" class="a-comentario"></textarea>
     </div>

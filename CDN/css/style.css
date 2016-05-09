@@ -22,4 +22,12 @@
 
     top: 15px;
 }
+
+.color-rojo    {background: antiquewhite;}
+.color-verde   {background: chartreuse;}
+.color-amarillo{background: gold;}
+
+
 @import "stylus/full.css";
+
+
