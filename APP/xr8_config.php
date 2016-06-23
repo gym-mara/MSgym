@@ -42,5 +42,5 @@ if (ZONADB == "local") {
 	define("BASE_HOSTNAME","localhost");
 	define("BASE_USERNAME","root");
 	define("BASE_PASSWORD","");
-	define("BASE_DATEBASE","gymh2o");
+	define("BASE_DATEBASE","marasport");
 	}else if (ZONADB == "INTERNET") {}else{}                
