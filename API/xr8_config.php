@@ -21,25 +21,25 @@ if (ZONA == "local") {
 		}
 
 if (ZONA == "local") {
-	define("BASE_URL","//localhost/server/XR8/MSgym/API");
+	define("BASE_URL","//localhost/MaraSport/API");
 	}else{
 		define("BASE_URL","//localhost/server/XR8/MSgym/API");
 		}
 
 if (ZONA == "local") {
-	define("BASE_APP","//localhost/server/XR8/MSgym/APP/");
+	define("BASE_APP","//localhost/MaraSport/APP/");
 	}else{
 		define("BASE_APP","//localhost/server/XR8/MSgym/APP/");	
 		}
 
 if (ZONA == "local") {
-	define("BASE_API","//localhost/server/XR8/MSgym/API/");
+	define("BASE_API","//localhost/MaraSport/API/");
 	}else{
 		define("BASE_API","//localhost/server/XR8/MSgym/API/");	
 		}
 
 if (ZONA == "local") {
-	define("BASE_CDN","//localhost/server/XR8/MSgym/CDN/");
+	define("BASE_CDN","//localhost/MaraSport/CDN/");
 	}else{
 		define("BASE_CDN","//localhost/server/XR8/MSgym/CDN/");
 		}
@@ -49,4 +49,4 @@ if (ZONADB == "local") {
 	define("BASE_USERNAME","root");
 	define("BASE_PASSWORD","");
 	define("BASE_DATEBASE","marasport");
-	}else if (ZONADB == "INTERNET") {}else{}             
+	}else if (ZONADB == "INTERNET") {}else{}                          

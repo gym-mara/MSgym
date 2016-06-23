@@ -26,7 +26,7 @@
             var ZONACDN  = "LOCAL"            
             
             if (ZONA == "LOCAL") {
-                  var ZONABASE = "//localhost/server/XR8/MSgym/"
+                  var ZONABASE = "//localhost/MaraSport/"
                   }else{
                         var ZONABASE = "//localhost/MaraSport/"
                         }
