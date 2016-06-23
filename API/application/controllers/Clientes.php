@@ -126,6 +126,8 @@ class Clientes extends CI_Controller {
     public function Newitem($action,$r_action,$tipo,$r_tipo){
         //-----> Viwer all
             if ($r_action == 'one'){  
+                print_r($_POST);
+
                 $xr8_data= $this->Querys->cliente_new_one();
                 }  
 

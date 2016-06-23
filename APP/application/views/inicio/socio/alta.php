@@ -67,24 +67,39 @@
         <label class="col-xs-4 control-label" for="inputDireccion">Dirección</label>
         <div   class="col-xs-8"><input type="text"    class="form-control i-c-alta-direccion" id="inputDireccion" placeholder="Dirección"></div>
       </div>
+      
 
+      <hr>
 
+      <h4>Membresia</h4>
+      <button id="btn-membresia-v" type="button" class=" btn btn-success">venta de membresia</button>
+
+      <hr>
+<div class="bs-example" data-example-id="striped-table"> 
+              <table class="table table-striped"> 
+                <caption></caption> 
+                <thead> 
+                  <tr>
+                    <th>concepto</th> 
+                    <th>precio</th> 
+                    <th>% descuento</th> 
+                    <th>preciofinal</th> 
+                  </tr> 
+                </thead> 
+                <tbody id="list-caja-activa"></tbody> </table> 
+      </div>
+
+      <hr>
+
+      
     </form>
 </div>
 
-<!-- Ticket Cliente Nuevo -->
-<div id="dialog-ticket-cliente-nuevo" title="Ticket Cliente Nuevo" >
-  <h5>Ticket del Cliente Nuevo.</h5>    
-    <div id="ticket-print" class="col-xs-12">
-      <span class="text-center col-xs-12">:::H2O:::<br></span>
-      <span class="text-center col-xs-12">PERSIA EN MOVIMIENTO<br></span>
-      <span class="text-left   col-xs-12">
-      FECHA: <span class="item-tiket-fecha"><?php echo date("Y-m-d H:m") ?></span><br>
-      SOCIO: <span class="item-tiket-nombre">JORGE RODRIGUEZ</span><br>
-      CANTIDAD: <span class="item-tiket-cantidad">$1.00</span><br>
-      CONCEPTO:<br>
-      <span class="item-tiket-concepto">1 MEMBRESIA ELITE $1.00</span><br>
-      </span>
-    </div>
-  <hr>
+<!--X:Lista de productos -->
+<div id="lista-productos" class="bs-example" data-example-id="striped-table"> 
+        <table class="table table-striped"> 
+          <thead> 
+            <tr> <th>existencia</th> <th>descripcion</th> <th>precio</th> <th>codigo barras</th> </tr> 
+          </thead> 
+          <tbody id="list-caja"></tbody> </table> 
 </div>

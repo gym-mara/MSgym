@@ -10,7 +10,7 @@
 date_default_timezone_set('America/Mexico_City');
 
 //Local or Internet
-define("ZONA","localgym");
+define("ZONA","local");
 define("ZONADB","local");
 define("TITLE","local");
 

@@ -30,6 +30,9 @@ console.error('Run: Puro Flow !!!')
     $(document).on("ready",DashboardClientes);
     $(document).on("ready",DashboardClientesPago);
 
+
+    $(document).on("ready",btnlistProductos);
+
     //$(document).on("ready",DashboardSociosAsistencia);
 
     //$(document).on("ready",DasboardVentasVapor);
@@ -274,6 +277,8 @@ console.error('Run: Puro Flow !!!')
                         var i_c_formfield = $('#formfield').val()
                         i_c_formfield =  htmlEncode(i_c_formfield)
 
+                        ventaMembresia = ventaMembresia();
+
                         data_alta = "nombre_alta="              + i_c_alta_nombre        + 
                                     "&i_c_alta_f_nacimiento="   + i_c_alta_f_nacimiento  +
                                     "&i_c_alta_telefono="       + i_c_alta_telefono      +
@@ -285,7 +290,8 @@ console.error('Run: Puro Flow !!!')
                                     "&i_c_direccion="           + i_c_alta_direccion     +
                                     "&i_c_radio="               + i_c_radio              +
                                     "&i_c_formfield="           + i_c_formfield          +
-                                    "&id_advance_trabajador="   + id_advance_trabajador
+                                    "&id_advance_trabajador="   + id_advance_trabajador  +
+                                    "&ventaMembresia="          + ventaMembresia
                                     ;
 
                             $(".item-tiket-nombre").append(i_c_alta_nombre)
@@ -642,11 +648,281 @@ console.error('Run: Puro Flow !!!')
     *                        *
     *                        *
     *************************/    
+    //2
+    function listProductos(){
+        console.debug("    Begin:Lista Productos");        
 
+            $("#list-caja").empty();
+            $("#list-caja .ticket-socio-i").hide();
 
+                $("#list-caja").empty('');
 
+            // XMLHttpRequest --->
+                console.debug("        Begin: Lista Productos XMLHttpRequest");
+
+                $("#fecha-especial").datepicker();
+
+                $.get(api_productos_all, function( data ) {
+
+                    $.each(data, function(key, val){
+
+                        //-----> A
+                        if (typeof(val.codebar) != 'undefined' && val.codebar != null){
+                            var var_codebar = val.codebar;
+                            }else{
+                                var var_codebar = 'sin codigo de barras';
+                                }
+                        //----->A
+                        
+                        //-----> 
+                        var x = randomString(20); 
+                        //----->
+
+                        //----->
+                        if (val.tipo == 'membresia'  || val.tipo == 'Membresia') {
+                            
+                            //----->
+                            if (val.cantidad > 100) {
+                                cantidad_x = "Suficientes";
+                            }
+                            //----->
+
+                            //----->
+                            if ($("#tipo_trabajdor").val() == "cajero") {
+
+                                $("#list-caja").append("<tr class='" + val.tipo + " '><th scope='row' class='list-caja-cantidad " + x + "'>" + cantidad_x + " " + val.unidad + "</th><td><div class='concepto membresia ' id='" + val.id_advance + "' value='"+val.nombre+"' >"+ val.nombre + "</div><div>Socio:<span id='txt-socio'></span> <div class='ticket-socio-i' style='visible:'><input type='text' id='venta-buscar-socio-xxx'/><input type='text' id='id_socio' name='id_socio'class='hidden'/></div></td><td class= '" + x + " precio " + val.id_advance + "'>" + val.precio_venta + "</td><td class='" + x + " descuento'><input id='" + val.id_advance + "'  class='" + x + " descuento "+val.id_advance + "' name='descuento' type='text' value='0' disabled/></td>                                              <td class='codigobarras'>" + var_codebar +"</td><td><input  class='" + val.id_advance + " preciofinal' name='preciofinal' type='text' value='" + val.precio_venta + " ' disabled/></td></tr>");                           
+                                
+                                }else{
+
+                                    //----->
+                                    /*
+                                    if (val.nombre == "Membresia 1 Mes") {
+
+                                        $("#list-caja").append("<tr class='" + val.tipo + " '><th scope='row' class='list-caja-cantidad " + x + "'>" + cantidad_x + " " + val.unidad + "</th><td><div class='concepto membresia ' id='" + val.id_advance + "' value='"+val.nombre+"' >"+ val.nombre + "</div><div>Socio:<span id='txt-socio'></span> <div class='ticket-socio-i' style='visible:'><input type='text' id='venta-buscar-socio-xxx'/><input type='text' id='id_socio' name='id_socio'class='hidden'/></div>Fecha Inicio de la Membresia: <div class='ticket-socio-i' style='visible:'><input type='text' class='" + x + " descuento fecha-especial' placeholder='2016-03-21'/></td><td class= '" + x + " precio " + val.id_advance + "'>" + val.precio_venta + "</td><td class='" + x + " descuento'><input id='" + val.id_advance + "'  class='" + x + " descuento "+val.id_advance + "' name='descuento' type='text' value='0' disabled/></td>                                              <td class='codigobarras'>" + var_codebar +"</td><td><input  class='" + val.id_advance + " preciofinal' name='preciofinal' type='text' value='" + val.precio_venta + " ' disabled/></td></tr>");                           
+                                        
+                                        }else{
+                                        
+                                            $("#list-caja").append("<tr class='" + val.tipo + " '><th scope='row' class='list-caja-cantidad " + x + "'>" + cantidad_x + " " + val.unidad + "</th><td><div class='concepto membresia ' id='" + val.id_advance + "' value='"+val.nombre+"' >"+ val.nombre + "</div><div>Socio:<span id='txt-socio'></span> <div class='ticket-socio-i' style='visible:'><input type='text' id='venta-buscar-socio-xxx'/><input type='text' id='id_socio' name='id_socio'class='hidden'/></div></td><td class= '" + x + " precio " + val.id_advance + "'>" + val.precio_venta + "</td><td class='" + x + " descuento'><input id='" + val.id_advance + "'  class='" + x + " descuento "+val.id_advance + "' name='descuento' type='text' value='0' disabled/></td>                                              <td class='codigobarras'>" + var_codebar +"</td><td><input  class='" + val.id_advance + " preciofinal' name='preciofinal' type='text' value='" + val.precio_venta + " ' disabled/></td></tr>");                           
+                                        
+                                        }
+                                        */
+                                        $("#list-caja").append("<tr class='" + val.tipo + " '><th scope='row' class='list-caja-cantidad " + x + "'>" + cantidad_x + " " + val.unidad + "</th><td><div class='concepto membresia ' id='" + val.id_advance + "' value='"+val.nombre+"' >"+ val.nombre + "</div></td><td class= '" + x + " precio " + val.id_advance + "'>" + val.precio_venta + "</td><td class='" + x + " descuento'><input id='" + val.id_advance + "'  class='" + x + " descuento "+val.id_advance + "' name='descuento' type='text' value='0' disabled/></td>                                              <td class='codigobarras'>" + var_codebar +"</td><td><input  class='" + val.id_advance + " preciofinal' name='preciofinal' type='text' value='" + val.precio_venta + " ' disabled/></td></tr>");                           
+                                    //----->
+
+                                }
+                            //----->
+                            }else{}
+                        //----->
+
+                        //----->
+                        /*
+                        if (val.tipo == 'Producto') {
+                            
+                            //----->
+                            if (val.cantidad > 0) {
+                                console.info("x:todo" + val.tipo );
+
+                                $("#list-caja").append("<tr class='" + val.tipo + " '><th scope='row' class='list-caja-cantidad " + x + "'>" + val.cantidad  + " " + val.unidad + "</th><td class='concepto' id='" + val.id_advance + "' value='"+val.nombre+"' > "+ val.nombre + "            </td>                                                                                                                                                                                                                 <td class= '" + x + " precio " + val.id_advance + "'>" + val.precio_venta + "</td><td class='" + x + " descuento'><input id='" + val.id_advance + "'  class='" + x + " descuento "+val.id_advance + "' name='descuento' type='text' value='0' disabled/></td><td class='codigobarras'>" + var_codebar +"</td><td><input  class='" + val.id_advance + " preciofinal' name='ajuste'   type='text' value='" + val.precio_venta + " ' disabled/></td></tr>");                                  
+                                }else{}
+                            //----->
+                            }else{}
+                        */    
+                        //----->
+
+                        });
+
+                    }).done(function() {
+                        
+                        console.log("    Almacen: Producto Lista Success (TPSx000003).");
+
+                        $("#list-caja .descuento,#list-caja .preciofinal").hide();
+                        $("#list-caja .ticket-socio-i,.nombre-socio,#id-socio").hide();
+
+                        }).fail(function(jqXHR, textStatus , errorThrown) {
+                                
+                            error_net(jqXHR, textStatus );
+
+                                console.error("        Almacen: Producto Lista Error (TPEx000001 [" + fail_txt + "] ).");
+                                alert("Almacen: Producto Lista Error (TPEx000001 [" + fail_txt + "] ).");
+
+                            }).always(function() {
+                                
+                                cloneRow();
+                                console.log("        Almacen: Producto Lista Success (TPSx000004).");
+                    
+                                });
+                    //API End: Almacen All
+
+                console.debug("        End: Lista Productos XMLHttpRequest");
+            //API End: Almacen All
+
+        console.debug("    End: Lista Productos");        
+        }  
+
+    /***************************************************    
+    *     allModal() ---> Lista de Productos Modal     * 
+    ***************************************************/
+    /*
+    *
+    *
+    */
+    //BENIG: Lista de Productos Modal
+    //3
+    function listProductosmodal(){
+        console.debug("    Begin: listProductosmodal");
+
+                $("#lista-productos").dialog({
+
+                position: { my: "center middle"},
+                resizable: false,
+                height:400,
+                width: 800,
+                modal: true,
+                buttons: {
+                    "Cerrar": function() {
+                        $( this ).dialog( "close" );
+                        }
+
+                    }
+
+                });
+
+        console.debug("    End: listProductosmodal");
+        }
     /*************************/  
+        /***************************************************    
+        *             Clonar Lista de Productos            * 
+        ***************************************************/
+        /*
+        *
+        *
+        */
+        /*
+            buscarsocio
+            txtPago
+            totalChange
+        */
+        //BENIG: Clonar Lista de Productos
+        function cloneRow(){
+            console.debug("         Begin: Clone rOW");  
 
+                    $("#list-caja tr").click(function() {
+                        
+                        $("#list-caja-activa").append("<tr class='list-caja-a' >" + $(this).html() + "</tr>")
+
+                        $(".list-caja-a .list-caja-cantidad,.list-caja-a .codigobarras ").hide();
+                        $(".list-caja-a .descuento ,.list-caja-a .preciofinal").show();
+
+                        //----->                
+                        /*
+                        totalChange()   
+                        buscarsocio()           
+                        txtPago();
+                        */
+
+                        $("#list-caja-activa .ticket-socio-i").show();
+                    });
+
+            console.debug("         End:  Clone rOW");     
+            }  
+
+            /***************************************************    
+            *                                                  * 
+            ***************************************************/
+            /*
+            *
+            *
+            */
+            //BENIG: 
+            function ventaMembresia(){
+                
+                //----->Begin: DB gym_ticket
+                    //-----> id_advance fecha  id_advance_trabajador total
+
+                    taskArray2Aticket_x          = new Array();
+
+                    //var ticket_info = Array()
+                        //id_advance_trabajdor         = $("#id_advance_trabajdor").val()
+                        //servicios_total_items        = $(".total-total").html()
+                        //id_advance_ticket_servicio_2 = randomString(20);
+                        //fecha_ticket_servicio        = $("#gymh2o_date_now").val();
+                    
+                    //----->info ticket
+                        //ticket_info          = [id_advance_trabajdor,servicios_total_items,id_advance_ticket_servicio_2,fecha_ticket_servicio];
+                        //alert(taskArray2Aticket_x);
+
+                //----->End: DB gym_ticket
+
+                //----->Begin: DB gym_ventas
+                    //-----> id id_advance id_advance_trabajador id_advance_ticket fecha  item item_precio item_descuento item_precio_final
+                    //----->                         #                    #          #      *       *              *            *              
+                        
+                        /*
+                        taskArray2Aticket0           = new Array();
+                        taskArray2Aticket1           = new Array();
+                        */
+                        taskArray2Aticket1           = new Array();
+                        taskArray2Aticket2           = new Array();
+                        taskArray2Aticket3           = new Array();
+                        taskArray2Aticket4           = new Array();           
+                        taskArray2Aticket5           = new Array();
+                        taskArray2Aticket6           = new Array();
+                
+                    //----->id_advance concepto
+                        $("#list-caja-activa .concepto").each(function() {
+                           taskArray2Aticket1.push($(this).attr('id'));
+                            });     
+
+                    //----->concepto
+                        $("#list-caja-activa .concepto").each(function() {
+                           taskArray2Aticket2.push($(this).html());
+                            });                   
+                    //----->concepto    precio
+                        $("#list-caja-activa .precio").each(function() {
+                           taskArray2Aticket3.push($(this).html());
+                            });                      
+                    //----->concepto    precio  % descuento 
+                        $("#list-caja-activa input[name=descuento]").each(function() {
+                           taskArray2Aticket4.push($(this).val());
+                            });            
+                    //----->concepto    precio  % descuento preciofinal
+                        $("#list-caja-activa #id_socio").each(function() {
+                           taskArray2Aticket6.push($(this).val());
+                            });
+
+                    //----->concepto    precio  % descuento preciofinal
+                        $("#list-caja-activa .preciofinal").each(function() {
+                           taskArray2Aticket5.push($(this).val());
+                            });
+                            person = {
+                                //ticket_info          : ticket_info,  
+                                taskArray2Aticket1   : taskArray2Aticket1,
+                                taskArray2Aticket2   : taskArray2Aticket2,
+                                taskArray2Aticket3   : taskArray2Aticket3,
+                                taskArray2Aticket4   : taskArray2Aticket4,
+                                taskArray2Aticket5   : taskArray2Aticket5,
+                                taskArray2Aticket6   : taskArray2Aticket6
+                                }
+                            return person;
+                }           
+
+
+    function btnlistProductos(){
+        $("#btn-membresia-v").click(function(event) {
+            /* Act on the event */
+            $("#lista-producto").hide();
+
+            listProductos();
+
+            listProductosmodal();
+
+            cloneRow();
+            $(".list-caja-a").click(function(event) {
+                /* Act on the event */
+                $(this).empty();
+            });
+        });    
+    }
     /*************************
     *                        *
     *                        *

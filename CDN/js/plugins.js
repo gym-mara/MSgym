@@ -18,15 +18,18 @@
 
           
 
-     //Local or INTERNET
-        var ZONAAPI  = "LOCAL"
-        var ZONAAPP  = "LOCAL"
-        var ZONACDN  = "LOCAL"            
-        //var ZONABASE = "//localhost/server/XR8/MSgym/"  
-        var ZONABASE = "//localhost/MaraSport/"  
+      //Local or INTERNET
+            var ZONA     = "LOCAL";
 
-        
-
+            var ZONAAPI  = "LOCAL"
+            var ZONAAPP  = "LOCAL"
+            var ZONACDN  = "LOCAL"            
+            
+            if (ZONA == "LOCAL") {
+                  var ZONABASE = "//localhost/server/XR8/MSgym/"
+                  }else{
+                        var ZONABASE = "//localhost/MaraSport/"
+                        }
 
             //API URL
             if (ZONAAPI == "LOCAL"){

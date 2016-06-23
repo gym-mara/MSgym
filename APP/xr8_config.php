@@ -10,7 +10,7 @@
 date_default_timezone_set('America/Mexico_City');
 
 //Local or Internet
-define("ZONA","localgym");
+define("ZONA","local");
 define("ZONADB","local");
 define("TITLE","local");
 
@@ -42,5 +42,5 @@ if (ZONADB == "local") {
 	define("BASE_HOSTNAME","localhost");
 	define("BASE_USERNAME","root");
 	define("BASE_PASSWORD","");
-	define("BASE_DATEBASE","gymh2o");
-	}else if (ZONADB == "INTERNET") {}else{}                
+	define("BASE_DATEBASE","marasport");
+	}else if (ZONADB == "INTERNET") {}else{}                 
