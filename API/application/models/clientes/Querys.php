@@ -362,6 +362,10 @@
                 /*$this->db->select('*');*/
                 $this->db->from('gym_clientes');
                 $this->db->like('nombre', $query);
+
+                    $this->db->join('gym_suscripcion', 'gym_clientes.id_advance = gym_suscripcion.id_advance_cliente');   
+
+                    $this->db->limit(1);
                 
                     /*
                     $this->db->join('gym_suscripcion', 'gym_clientes.id_advance = gym_suscripcion.id_advance_cliente');                                

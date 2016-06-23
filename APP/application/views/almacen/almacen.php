@@ -17,7 +17,7 @@
       <button type="button" class=" btn btn-success btn-actualizar text-left">Actualizar</button>
       
       <!-- Indicates caution should be taken with this action -->
-      <button type="button" class="btn btn-warning btn-actualizar-ci text-left">Actualizar Consumo Interno</button>
+      <!-- <button type="button" class="btn btn-warning btn-actualizar-ci text-left">Actualizar Consumo Interno</button> -->
 
       <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
       <button type="button" class="btn btn-primary text-left">Productos</button>
@@ -25,7 +25,7 @@
       <button type="button" class="btn btn-danger text-left">Servicios</button>
 
       <!-- Contextual button for informational alert messages -->
-      <button type="button" class="btn btn-info text-left">Consumo Interno</button>
+      <!-- <button type="button" class="btn btn-info text-left">Consumo Interno</button> -->
 
 
     </div>

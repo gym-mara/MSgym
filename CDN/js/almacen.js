@@ -497,23 +497,23 @@ console.error('Run: Puro Flow !!!')
     //-----> (E) Begin BTN:BtnItems()
     function BtnItems(){
         
+        //PRODUCTOS
         $(".btn-primary").click(function() {
             
-            $(".Producto ").show();
-            $(".Interno, .membresia , .ajuste , .visita , .servicio").hide();
+            $(".Producto").show();
+            $(".Membresia").hide();
 
             $(".btn-actualizar-ci").hide();
             $(".btn-actualizar").show();
 
             });
         
+        //Servicios
+        //Producto  Membresia
         $(".btn-danger").click(function() {
             
-            $(".membresia , .ajuste , .visita , .servicio").show();
-            $(".Producto , .Interno").hide();
-
-            $(".btn-actualizar-ci").hide();
-            $(".btn-actualizar").show();
+            $(".Producto").hide();
+            $(".Membresia").show();
 
             });
 
