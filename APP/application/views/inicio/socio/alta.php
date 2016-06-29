@@ -71,32 +71,32 @@
 
       <hr>
 
-      <h4>Membresia</h4>
-      <button id="btn-membresia-v" type="button" class=" btn btn-success">venta de membresia</button>
+      <div class="hidden">
+        <h4>Membresia</h4>
+        <button id="btn-membresia-v" type="button" class=" btn btn-success">venta de membresia</button>
 
-      <hr>
-<div class="bs-example" data-example-id="striped-table"> 
-              <table class="table table-striped"> 
-                <caption></caption> 
-                <thead> 
-                  <tr>
-                    <th>concepto</th> 
-                    <th>precio</th> 
-                    <th>% descuento</th> 
-                    <th>preciofinal</th> 
-                  </tr> 
-                </thead> 
-                <tbody id="list-caja-activa"></tbody> </table> 
+        <hr>
+          <div class="bs-example" data-example-id="striped-table"> 
+                  <table class="table table-striped"> 
+                    <caption></caption> 
+                    <thead> 
+                      <tr>
+                        <th>concepto</th> 
+                        <th>precio</th> 
+                        <th>% descuento</th> 
+                        <th>preciofinal</th> 
+                      </tr> 
+                    </thead> 
+                    <tbody id="list-caja-activa"></tbody> </table> 
+          </div>
+        <hr>
       </div>
-
-      <hr>
-
       
     </form>
 </div>
 
 <!--X:Lista de productos -->
-<div id="lista-productos" class="bs-example" data-example-id="striped-table"> 
+<div id="lista-productos" class="bs-example hidden" data-example-id="striped-table"> 
         <table class="table table-striped"> 
           <thead> 
             <tr> <th>existencia</th> <th>descripcion</th> <th>precio</th> <th>codigo barras</th> </tr> 
